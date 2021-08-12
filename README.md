@@ -163,6 +163,6 @@ Download and extract tomcat 9 from *https://tomcat.apache.org/download-90.cgi
 
 
 
-# you can run the app in the server now
+# you can run the app on the server now
 
 
