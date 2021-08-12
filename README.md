@@ -132,19 +132,37 @@ Download and extract tomcat 9 from *https://tomcat.apache.org/download-90.cgi
 * Home Directory: browse to tomcat 9 folder location and select it
 * Runtime JRE -> Alternate JRE: select jdk1.8
 
-### Import project from Git repository and configure project
+### Import project to eclips and configure project
 * Right click on CourseManagementJDBCWebApp-> Build Path -> Configure Build Path...
 * Remove JRE System Library
 * Select Add Library...
 * Select JRE System Library
 * Choose Alternate JRE -> jdk1.8.
 
+### Eclipse setup server
+* Window -> Show View -> Servers
+
+### NetBeans setup server runtime
+* Go to Tools -> Servers ->
+* Select Add server...
+* Choose **Apache Tomcat or tomEE** name it 'tomcat 9'
+* choose **Next**
+* Server Location: browse to tomcat 9 folder location and select it
+* choose **finish*
+* after that select **platform** choose JavaPlatForm->jdk1.8
+
+### Import project to NetBeans and configure project
+* Right click on CourseManagementJDBCWebApp->Properties -> Build->Compile
+* Choose JavaPlatForm->jdk1.8
+#### add the server to the project 
+* Right click on CourseManagementJDBCWebApp->Properties -> Run
+* Choose Server:->tomcat 9
+
 ### edite dp.properties file
 * go to src/main/resources/dp.properties and change 'db_password' and 'db_user_name' to your username and password for mysql
 
 
-### Eclipse setup server
-* Window -> Show View -> Servers
+
 # you can run the app in the server now
 
 
