@@ -139,12 +139,12 @@ Download and extract tomcat 9 from *https://tomcat.apache.org/download-90.cgi
 * Select JRE System Library
 * Choose Alternate JRE -> jdk1.8.
 
-### change dp.properties file
-* in the structure of the project src/main/resources/dp.properties and change 'db_password' and 'db_user_name' to your username and password for mysql
+### edite dp.properties file
+* go to src/main/resources/dp.properties and change 'db_password' and 'db_user_name' to your username and password for mysql
 
 
 ### Eclipse setup server
 * Window -> Show View -> Servers
-#you can run the app in the server now
+# you can run the app in the server now
 
 
