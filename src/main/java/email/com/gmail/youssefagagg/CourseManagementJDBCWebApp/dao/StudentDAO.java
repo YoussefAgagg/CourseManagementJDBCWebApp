@@ -12,8 +12,7 @@ import java.util.Map;
 
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Course;
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Student;
-
-import email.com.gmail.youssefagagg.db.connection.DatabaseConnectionFactory;
+import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.db.connection.DatabaseConnectionFactory;
 
 public class StudentDAO {
 	public void addStudent (Student student) throws SQLException {

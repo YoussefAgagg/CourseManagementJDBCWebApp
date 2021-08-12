@@ -19,7 +19,7 @@ import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Teacher;
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.CourseDAO;
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.StudentDAO;
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.TeacherDAO;
-import email.com.gmail.youssefagagg.db.connection.DatabaseConnectionFactory;
+import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.db.connection.DatabaseConnectionFactory;
 
 /**
  * Servlet implementation class InitServlet

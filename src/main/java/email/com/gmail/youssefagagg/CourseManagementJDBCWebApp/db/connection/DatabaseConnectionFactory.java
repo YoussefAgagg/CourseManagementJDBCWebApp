@@ -1,4 +1,4 @@
-package email.com.gmail.youssefagagg.db.connection;
+package email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.db.connection;
 
 import java.io.IOException;
 import java.io.InputStream;
