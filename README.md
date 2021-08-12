@@ -149,7 +149,7 @@ Download and extract tomcat 9 from *https://tomcat.apache.org/download-90.cgi
 * Choose **Apache Tomcat or tomEE** name it 'tomcat 9'
 * choose **Next**
 * Server Location: browse to tomcat 9 folder location and select it
-* choose **finish*
+* choose **finish**
 * after that select **platform** choose JavaPlatForm->jdk1.8
 
 ### Import project to NetBeans and configure project
