@@ -18,4 +18,8 @@ public class Teacher extends Person {
 	public List<Teacher> getTeachers() throws SQLException {
 		return teacherDAO.getTeachers();
 		}
+	public void updateTeacher() throws SQLException {
+		teacherDAO.updateTeacher(this);
+		
+	}
 }

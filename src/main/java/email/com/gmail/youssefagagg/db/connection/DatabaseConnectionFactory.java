@@ -30,6 +30,7 @@ public class DatabaseConnectionFactory {
 		poolProperties.setUsername(dbProperties.getProperty("db_user_name"));
 		poolProperties.setPassword(dbProperties.getProperty("db_password"));
 		poolProperties.setMaxActive(10);
+		poolProperties.setMaxIdle(10);
 		poolProperties.setMaxWait(1000);
 		
 		dataSource = new DataSource();

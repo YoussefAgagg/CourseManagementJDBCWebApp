@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,7 +21,7 @@
 		<c:otherwise>
 		</c:otherwise>
 	</c:choose>
-	<h2>Courses:</h2>
+	<h2>Teachers:</h2>
 	<c:if test="${errMsg != null}">
 		<span style="color: red;"> <c:out value="${errMsg}"></c:out>
 		</span>
@@ -52,5 +52,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<p>number of teachers:${teachers.size() }</p>
+	<a href="addTeacher.jsp" >add teacher</a><br>
+	<a href="index.html">main</a><br>
 </body>
 </html>

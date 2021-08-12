@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Course;
+
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Teacher;
 import email.com.gmail.youssefagagg.db.connection.DatabaseConnectionFactory;
 
@@ -60,10 +60,10 @@ final String sql = "delete from teacher where id=?";
 	}
 
 	public void updateTeacher(Teacher teacher)throws SQLException{
-		String sql="Update teacher SET"
-				+ "first_name=?"
-				+ "last_name=?"
-				+ "designation=?"
+		String sql="Update teacher SET "
+				+ "first_name=?, "
+				+ "last_name=?, "
+				+ "designation=? "
 				+ "where id=?";
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()

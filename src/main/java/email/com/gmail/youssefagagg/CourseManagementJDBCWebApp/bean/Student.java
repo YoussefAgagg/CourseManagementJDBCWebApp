@@ -21,4 +21,8 @@ public class Student extends Person {
 		return studentDAO.getStudents();
 		
 	}
+	public void updateStudent() throws SQLException {
+		studentDAO.updateStudent(this);
+		
+	}
 }

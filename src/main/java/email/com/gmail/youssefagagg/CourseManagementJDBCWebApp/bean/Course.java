@@ -6,7 +6,7 @@ import java.util.List;
 
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.CourseDAO;
 import lombok.Data;
-import lombok.ToString;
+
 
 @Data
 public class Course {
@@ -27,6 +27,9 @@ public class Course {
 		}
 	public String toString() {
 		return name;
+	}
+	public void updateCourse() throws SQLException {
+		courseDAO.updateCorse(this);
 	}
 
 

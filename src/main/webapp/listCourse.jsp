@@ -59,6 +59,9 @@ pageEncoding="UTF-8"%>
 </tr>
 </c:forEach>
 </table>
+<p>number of courses:${courses.size() }</p>
+	<a href="addCourse.jsp" >add course</a><br>
+	<a href="index.html">main</a><br>
 </body>
 
 </html>

@@ -27,14 +27,14 @@ import email.com.gmail.youssefagagg.db.connection.DatabaseConnectionFactory;
 @WebServlet(value = "/initServlet",loadOnStartup = 1)
 public class InitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InitServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public InitServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -42,14 +42,19 @@ public class InitServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		try {
 			DatabaseConnectionFactory.getConnectionFactory().init();
-			}
-			catch (IOException e) {
+		}
+		catch (IOException e) {
 			config.getServletContext().log(e.getLocalizedMessage(),e);
-			}
-	
-				
+		}
+
+
 	}
-	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		req.getRequestDispatcher("/index.html").forward(req, resp);
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url="/index.html";
@@ -59,11 +64,15 @@ public class InitServlet extends HttpServlet {
 			.forward(req, resp);
 			return;
 		}
-		
+
 		switch (action) {
 		case "addCourse":
-			addCourse(req,resp);
-			
+			addCourse(req,resp,false);
+
+			break;
+		case "updateCourse":
+			addCourse(req,resp,true);
+
 			break;
 		case "updateFromListCourse": 
 			updateFromListCourse(req,resp);
@@ -72,8 +81,12 @@ public class InitServlet extends HttpServlet {
 			deleteFromListCourse(req,resp);
 			break;
 		case "addStudent":
-			addStudent(req,resp);
-			
+			addStudent(req,resp,false);
+
+			break;
+		case "updateStudent":
+			addStudent(req,resp,true);
+
 			break;
 		case "updateFromListStudent": 
 			updateFromListStudent(req,resp);
@@ -82,8 +95,12 @@ public class InitServlet extends HttpServlet {
 			deleteFromListStudent(req,resp);
 			break;
 		case "addTeacher":
-			addTeacher(req,resp);
-			
+			addTeacher(req,resp,false);
+
+			break;
+		case "updateTeacher":
+			addTeacher(req,resp,true);
+
 			break;
 		case "updateFromListTeacher": 
 			updateFromListTeacher(req,resp);
@@ -93,7 +110,7 @@ public class InitServlet extends HttpServlet {
 			break;
 
 		default:
-			req.getSession().getServletContext().getRequestDispatcher(url)
+			req.getRequestDispatcher(url)
 			.forward(req, resp);
 			break;
 		}
@@ -111,7 +128,7 @@ public class InitServlet extends HttpServlet {
 		}
 		req.getSession().getServletContext().getRequestDispatcher(url)
 		.forward(req, resp);
-		
+
 	}
 
 	private void updateFromListTeacher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -141,7 +158,7 @@ public class InitServlet extends HttpServlet {
 		}
 		req.getSession().getServletContext().getRequestDispatcher(url)
 		.forward(req, resp);
-		
+
 	}
 
 	private void updateFromListStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -156,7 +173,7 @@ public class InitServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private void deleteFromListCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -171,7 +188,7 @@ public class InitServlet extends HttpServlet {
 		}
 		req.getSession().getServletContext().getRequestDispatcher(url)
 		.forward(req, resp);
-		
+
 	}
 
 	private void updateFromListCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -186,34 +203,45 @@ public class InitServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	private void addTeacher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void addTeacher(HttpServletRequest req, HttpServletResponse resp,boolean update) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String url="/listTeacher.jsp";
 		Teacher teacher=new Teacher();
 		String firstName=req.getParameter("firstName");
 		String lastName=req.getParameter("lastName");
 		String designation=req.getParameter("designation");
-		boolean vaild=vaildTeacher(firstName,lastName,designation);
-		if(vaild) {
 		teacher.setFirstName(firstName);
 		teacher.setLastName(lastName);
 		teacher.setDesignation(designation);
-		try {
-			teacher.addTeacher();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		boolean vaild=vaildTeacher(firstName,lastName,designation);
+		if(vaild) {
+			try {
+				if(!update) {
+				teacher.addTeacher();
+				}else {
+					int id=Integer.parseInt(req.getParameter("teacherid"));
+					teacher.setId(id);
+					teacher.updateTeacher();
+					
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else {
+			if(update)req.setAttribute("teacher", teacher);
 			req.setAttribute("message", "enter vaild data");
 			url="/addTeacher.jsp";
 		}
-		req.getSession().getServletContext().getRequestDispatcher(url)
-		.forward(req, resp);
 		
+		
+		req.getRequestDispatcher(url)
+		.forward(req, resp);;
+		
+
 	}
 
 	private boolean vaildTeacher(String firstName, String lastName, String designation) {
@@ -229,79 +257,111 @@ public class InitServlet extends HttpServlet {
 		return s!=null&&!s.isEmpty() ;
 	}
 
-	private void addStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void addStudent(HttpServletRequest req, HttpServletResponse resp,boolean update) throws ServletException, IOException {
 		String url="/listStudent.jsp";
 		Student student=new Student();
 		String firstName=req.getParameter("firstName");
 		String lastName=req.getParameter("lastName");
 		String[] coursesids=req.getParameterValues("coursesids");
 		
-		if(vaildString(firstName)&&vaildString(lastName)) {
 		student.setFirstName(firstName);
 		student.setLastName(lastName);
 		student.setEnrolledsince(new Date().getTime());
 		List<Course>courses=new ArrayList<Course>();
 		if(coursesids!=null) {
-		for(String corseid:coursesids) {
-			Course course=new Course();
-			course.setId(Integer.parseInt(corseid));
-			courses.add(course);
-		
-		}
+			for(String corseid:coursesids) {
+				Course course=new Course();
+				course.setId(Integer.parseInt(corseid));
+				courses.add(course);
+
+			}
 		}
 		student.setCourses(courses);
-		
-		try {
-			student.addStudent();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}else {
-			req.setAttribute("message", "enter vaild data");
-			url="/addStudent.jsp";
-		}
-		req.getSession().getServletContext().getRequestDispatcher(url)
-		.forward(req, resp);
-		
-	}
-
-	private void addCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url="/listCourse.jsp";
-		Course course=new Course();
-		String name=req.getParameter("name");
-		String credites=req.getParameter("credits");
-		String teacherID=req.getParameter("teacherid");
-		boolean vaild= vaildCourse(name,credites);
-		if(vaild) {
-			if(vaildString(teacherID)) {
-			Teacher teacher=new Teacher();
-			teacher.setId(Integer.parseInt(teacherID));
-			course.setTeacher(teacher);
-			}
-			course.setCredits(Integer.parseInt(credites));
-			course.setName(name);	
+		if(vaildString(firstName)&&vaildString(lastName)) {
 			try {
-				course.addCourse();
+				if(!update) {
+				student.addStudent();
+				}else {
+					
+					int id=Integer.parseInt(req.getParameter("studentid"));
+					student.setId(id);
+					student.updateStudent();
+
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else {
+			if(update)					
+				req.setAttribute("student", student);
+			
+			req.setAttribute("message", "enter vaild data");
+			url="/addStudent.jsp";
+		}
+		req.getRequestDispatcher(url)
+		.forward(req, resp);
+
+	}
+
+	private void addCourse(HttpServletRequest req, HttpServletResponse resp,boolean update) throws ServletException, IOException {
+		String url="/listCourse.jsp";
+		Course course=new Course();
+		String name=req.getParameter("name");
+		String credites=req.getParameter("credits");
+		String teacherID=req.getParameter("teacherid");
+
+
+		if(vaildString(teacherID)) {
+			Teacher teacher=new Teacher();
+			teacher.setId(Integer.parseInt(teacherID));
+			course.setTeacher(teacher);
+		}
+		if(vaildInt(credites))
+			course.setCredits(Integer.parseInt(credites));
+
+		course.setName(name);
+		boolean vaild= vaildCourse(name,credites);
+		if(vaild) {
+
+			try {
+				if(!update) {
+					course.addCourse();
+				}else {
+					int id=Integer.parseInt(req.getParameter("courseid"));
+					course.setId(id);
+					course.updateCourse();
+					
+
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			if(update) req.setAttribute("course", course);
 			req.setAttribute("message", "enter vaild data");
 			url="/addCourse.jsp";
-			
+
 		}
-	
-		req.getSession().getServletContext().getRequestDispatcher(url)
+
+
+
+
+		req.getRequestDispatcher(url)
 		.forward(req, resp);
-		
+
 	}
 
 	private boolean vaildCourse(String name, String credites) {
-		
+
 		if(!vaildString(name)||!vaildString(credites))return false;
-		
+
+		return vaildInt(credites);
+
+	}
+
+	private boolean vaildInt(String credites) {
 		try {
 			int c=Integer.parseInt(credites);
 			if(c<=0) return false;

@@ -59,11 +59,7 @@ final String sql = "delete from course where id=?";
 	}
 
 	public void updateCorse(Course course)throws SQLException{
-		String sql="Update course SET"
-				+ "name=?"
-				+ "credits=?"
-				+ "Teacher_id=?"
-				+ "where id=?";
+		String sql="Update course SET name=? ,credits=? ,Teacher_id=? where id=? ;";
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
 				.getConnection();
@@ -71,7 +67,12 @@ final String sql = "delete from course where id=?";
 				con.prepareStatement(sql)){
 			preparedStatement.setString(1, course.getName());
 			preparedStatement.setInt(2, course.getCredits());
-			preparedStatement.setInt(3, course.getTeacher().getId());
+			if(course.getTeacher()==null) {
+				preparedStatement.setNull(3, Types.INTEGER);
+			}else {
+				preparedStatement.setInt(3, course.getTeacher().getId());
+				
+			}
 			preparedStatement.setInt(4, course.getId());
 			preparedStatement.executeUpdate();
 			

@@ -12,7 +12,7 @@ import java.util.Map;
 
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Course;
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Student;
-import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Teacher;
+
 import email.com.gmail.youssefagagg.db.connection.DatabaseConnectionFactory;
 
 public class StudentDAO {
@@ -62,10 +62,10 @@ final String sql = "delete from student where id=?";
 	}
 
 	public void updateStudent(Student student)throws SQLException{
-		String sql="Update Student SET"
-				+ "first_name=?"
-				+ "last_name=?"
-				+ "enrolled_since=?"
+		String sql="Update Student SET "
+				+ "first_name=?, "
+				+ "last_name=?, "
+				+ "enrolled_since=? "
 				+ "where id=?";
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
