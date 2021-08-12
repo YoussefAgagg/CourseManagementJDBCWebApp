@@ -14,7 +14,7 @@ JEE project using JDBC to access database
 
 ## Highlights
 * Instructions for server configuration in Eclipse
-* Wildfly configuration instructions
+
 * Database data definition scripts
 
 
@@ -129,18 +129,22 @@ Download and extract tomcat 9 from *https://tomcat.apache.org/download-90.cgi
 * Go to Window -> Preferences -> Server -> Runtime Environments
 * Select Add...
 * Choose **Apache Tomcat v9.0**
-* Name: **WildFly 10.0 Boilerplate**
 * Home Directory: browse to tomcat 9 folder location and select it
 * Runtime JRE -> Alternate JRE: select jdk1.8
 
 ### Import project from Git repository and configure project
-* Right click on rg-archetype-j2ee-login -> Build Path -> Configure Build Path...
+* Right click on CourseManagementJDBCWebApp-> Build Path -> Configure Build Path...
 * Remove JRE System Library
 * Select Add Library...
 * Select JRE System Library
-* Choose Alternate JRE -> jdk1.8.0_77
+* Choose Alternate JRE -> jdk1.8.
+
+### change dp.properties file
+* in the structure of the project src/main/resources/dp.properties and change 'db_password' and 'db_user_name' to your username and password for mysql
+
 
 ### Eclipse setup server
 * Window -> Show View -> Servers
+#you can run the app in the server now
 
 
