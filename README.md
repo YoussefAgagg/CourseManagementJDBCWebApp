@@ -1,6 +1,5 @@
 # CourseManagementJDBCWebApp
-JEE project using JDBC to access database
-
+JEE project with JDBC 
 
 
 ## Technologies
