@@ -8,12 +8,12 @@ JEE project using JDBC to access database
 * Jdk1.8
 * MySql 8.0.19
 * Tomcat 9 
-* Java EE 8
+* Maven
 * JDBC
 * Other 3rd party libraries (i.e. Lombok)
 
 ## Highlights
-* Instructions for server configuration in Eclipse
+* Instructions for server configuration in Eclipse and NetBeans
 
 * Database data definition scripts
 
@@ -21,6 +21,7 @@ JEE project using JDBC to access database
 ## Setup
 
 ### MySql
+
 * run this script to create the schema'course_management' and the tables
 
 ```
