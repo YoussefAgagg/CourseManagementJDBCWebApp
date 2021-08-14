@@ -9,7 +9,7 @@ JEE project with JDBC
 * Tomcat 9 
 * Maven
 * JDBC
-*JEE
+* JEE
 ## Dependencies
 
 1. Make sure you have [Java](http://www.java.com/) installed on your system, if not follow the vendor instructions for installing them on your operating system.
