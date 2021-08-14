@@ -127,8 +127,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ```
 
 ### Java EE Server - Apache Tomcat 9 
-Download and extract tomcat 9 from *https://tomcat.apache.org/download-90.cgi
-###Eclipse
+Download and extract [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
+### Eclipse
 #### Eclipse setup server runtime
 * Go to Window -> Preferences -> Server -> Runtime Environments
 * Select **Add...**
