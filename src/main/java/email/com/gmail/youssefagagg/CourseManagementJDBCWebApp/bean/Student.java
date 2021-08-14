@@ -4,11 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.StudentDAO;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@Data
-@EqualsAndHashCode(callSuper=true)
 public class Student extends Person {
 	private long enrolledsince;
 	private List<Course>courses;
@@ -25,4 +21,17 @@ public class Student extends Person {
 		studentDAO.updateStudent(this);
 		
 	}
+	public long getEnrolledsince() {
+		return enrolledsince;
+	}
+	public void setEnrolledsince(long enrolledsince) {
+		this.enrolledsince = enrolledsince;
+	}
+	public List<Course> getCourses() {
+		return courses;
+	}
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	
 }

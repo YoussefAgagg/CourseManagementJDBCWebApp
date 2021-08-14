@@ -5,10 +5,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.CourseDAO;
-import lombok.Data;
 
 
-@Data
+
+
 public class Course {
 	private int id;
 	private String name;
@@ -25,12 +25,44 @@ public class Course {
 	public List<Course> getCourses() throws SQLException {
 		return courseDAO.getCourses();
 		}
-	public String toString() {
-		return name;
-	}
+	
 	public void updateCourse() throws SQLException {
 		courseDAO.updateCorse(this);
 	}
-
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getCredits() {
+		return credits;
+	}
+	public void setCredits(int credits) {
+		this.credits = credits;
+	}
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	public List<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+	public String toString() {
+		return name;
+	}
 
 }
