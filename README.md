@@ -160,7 +160,7 @@ Download and extract [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 * Right click on CourseManagementJDBCWebApp->Properties -> Build->Compile
 * Choose JavaPlatForm->jdk1.8
 
-####add the server to the project in NetBeans
+#### add the server to the project in NetBeans
 * Right click on CourseManagementJDBCWebApp->Properties->Run
 * Choose Server:->tomcat 9
 
