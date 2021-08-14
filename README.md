@@ -146,7 +146,7 @@ Download and extract [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 #### Eclipse setup server
 * Window -> Show View -> Servers
 
-###NetBeans
+### NetBeans
 #### NetBeans setup server runtime
 * Go to Tools -> Servers ->
 * Select **Add server...**
