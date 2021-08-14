@@ -165,7 +165,7 @@ Download and extract [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 * Choose Server:->tomcat 9
 
 ### Edit dp.properties file in the project
-* in the project structure go to src/main/resources/dp.properties and change 'db_password' and 'db_user_name' to your username and password for mysql
+* in the project structure go to src/main/resources/dp.properties and change **db_password** and **db_user_name** to your username and password for mysql
 
 
 
