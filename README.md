@@ -1,5 +1,5 @@
 # CourseManagementJDBCWebApp
-JEE project with JDBC 
+the main purpose of this project is to use jdbc to access database 
 
 
 ## Technologies
@@ -25,7 +25,8 @@ JEE project with JDBC
 ## Setup
 
 ### MySql
-
+**EER Diagrame of the database**
+* ![COURSE-MANGMENTSCHEMA](https://user-images.githubusercontent.com/62031222/129487548-7f46792d-491e-4be3-885d-e5ef67d774a9.png)
 * run this script to create the schema 'course_management' and the tables
 
 ```
