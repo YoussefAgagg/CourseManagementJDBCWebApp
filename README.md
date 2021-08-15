@@ -13,7 +13,7 @@ JEE project with JDBC
 ## Dependencies
 
 1. Make sure you have [Java](http://www.java.com/) installed on your system, if not follow the vendor instructions for installing them on your operating system.
-2. Make sure you have [MySql](https://www.mysql.com/) installed on your system, if not follow the vendor instructions for installing them on your operating system.
+2. Make sure you have [MySql](https://dev.mysql.com/downloads/mysql/) installed on your system, if not follow the vendor instructions for installing them on your operating system.
 
 ## Highlights
 * Database data definition scripts
