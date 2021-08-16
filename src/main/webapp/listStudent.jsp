@@ -46,12 +46,12 @@
 				${student.courses}
 				
 				</td>
-				<td><form action="initServlet" method="post">
+				<td><form action="studentServlet" method="post">
 						<input type="hidden" name="action" value="updateFromListStudent">
 						<input type="hidden" name="studentid" value="${student.id }">
 						<button type="submit" name="submit">update</button>
 					</form></td>
-				<td><form action="initServlet" method="post">
+				<td><form action="studentServlet" method="post">
 						<input type="hidden" name="action" value="deleteFromListStudent">
 						<input type="hidden" name="studentid" value="${student.id }">
 						<button type="submit" name="submit">delete</button>

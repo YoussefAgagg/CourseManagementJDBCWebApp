@@ -11,9 +11,42 @@
   	<servlet-name>InitServlet</servlet-name>
   	<servlet-class>email.com.gmail.youssefagagg.servlet.InitServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>courseServlet</display-name>
+  	<servlet-name>CourseServlet</servlet-name>
+  	<servlet-class>email.com.gmail.youssefagagg.servlet.CourseServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>StudentServlet</display-name>
+  	<servlet-name>StudentServlet</servlet-name>
+  	<servlet-class>email.com.gmail.youssefagagg.servlet.StudentServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>TeacherServlet</display-name>
+  	<servlet-name>TeacherServlet</servlet-name>
+  	<servlet-class>email.com.gmail.youssefagagg.servlet.TeacherServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>InitServlet</servlet-name>
   	<url-pattern>/InitServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>CourseServlet</servlet-name>
+  	<url-pattern>/CourseServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>TeacherServlet</servlet-name>
+  	<url-pattern>/TeacherServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>StudentServlet</servlet-name>
+  	<url-pattern>/StudentServlet</url-pattern>
   </servlet-mapping>
     <welcome-file-list>
     <welcome-file>initServlet</welcome-file>

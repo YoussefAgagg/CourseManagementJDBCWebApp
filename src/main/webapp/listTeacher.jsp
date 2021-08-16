@@ -39,12 +39,12 @@
 				<td>${teacher.firstName}</td>
 				<td>${teacher.lastName}</td>
 				<td>${teacher.designation}</td>
-				<td><form action="initServlet" method="post">
+				<td><form action="teacherServlet" method="post">
 						<input type="hidden" name="action" value="updateFromListTeacher">
 						<input type="hidden" name="teacherid" value="${teacher.id }">
 						<button type="submit" name="submit">update</button>
 					</form></td>
-				<td><form action="initServlet" method="post">
+				<td><form action="teacherServlet" method="post">
 						<input type="hidden" name="action" value="deleteFromListTeacher">
 						<input type="hidden" name="teacherid" value="${teacher.id }">
 						<button type="submit" name="submit">delete</button>
