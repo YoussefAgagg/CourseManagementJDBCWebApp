@@ -43,7 +43,7 @@ public class StudentDAO {
 		}
 	}
 	public void deleteStudent(int id) throws SQLException {
-final String sql = "delete from student where id=?";
+final String sql = "delete from Student where id=?";
 		
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
@@ -82,7 +82,7 @@ final String sql = "delete from student where id=?";
 		
 	}
 	private void updateCourseStudentTable(Connection con, Student student) throws SQLException {
-		String sql="delete from course_student where Student_id=?";
+		String sql="delete from Course_Student where Student_id=?";
 		PreparedStatement preparedStatement=con.prepareStatement(sql);
 		preparedStatement.setInt(1, student.getId());
 		preparedStatement.executeUpdate();
@@ -91,7 +91,7 @@ final String sql = "delete from student where id=?";
 		
 	}
 	private void insertIntoCourseStudentTable(Connection con,Student student) throws SQLException {
-		String sql = "insert into course_student (Course_id,Student_id) values (?,?)";
+		String sql = "insert into Course_Student (Course_id,Student_id) values (?,?)";
 		//create prepared statement with option to get auto generated keys
 		PreparedStatement stmt = con.prepareStatement(sql);
 		//set parameters
@@ -110,7 +110,7 @@ final String sql = "delete from student where id=?";
 		List<Student> students = new ArrayList<>();
 		
 			
-			String sql = "select distinct student.id,student.first_name,student.last_name,student.enrolled_since,course.id,course.name,course.credits from student left outer join  course_student on student.id =course_student.Student_id left outer join course on course_student.Course_id=course.id"
+			String sql = "select  Student.id,Student.first_name,Student.last_name,Student.enrolled_since,Course.id,Course.name,Course.credits from Student left outer join  Course_Student on Student.id =Course_Student.Student_id left outer join Course on Course_Student.Course_id=Course.id"
 					;
 			Map<Integer, Student>map=new HashMap<Integer, Student>();
 			try(Connection con=
@@ -155,7 +155,7 @@ final String sql = "delete from student where id=?";
 
 	public Student getStudent(int id) throws SQLException {
 		
-		String sql = "select distinct student.id,student.first_name,student.last_name,student.enrolled_since,course.id,course.name,course.credits from student left outer join  course_student on student.id =course_student.Student_id left outer join course on course_student.Course_id=course.id where student.id=?"
+		String sql = "select  Student.id,Student.first_name,Student.last_name,Student.enrolled_since,Course.id,Course.name,Course.credits from Student left outer join  Course_Student on Student.id =Course_Student.Student_id left outer join Course on Course_Student.Course_id=Course.id where Student.id=?"
 				;
 		Student student = null;	
 		

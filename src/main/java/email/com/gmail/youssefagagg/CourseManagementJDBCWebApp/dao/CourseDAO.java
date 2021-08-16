@@ -41,7 +41,7 @@ public class CourseDAO {
 		
 	}
 	public void deleteCourse(int id) throws SQLException {
-final String sql = "delete from course where id=?";
+final String sql = "delete from Course where id=?";
 		
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
@@ -59,7 +59,7 @@ final String sql = "delete from course where id=?";
 	}
 
 	public void updateCorse(Course course)throws SQLException{
-		String sql="Update course SET name=? ,credits=? ,Teacher_id=? where id=? ;";
+		String sql="Update Course SET name=? ,credits=? ,Teacher_id=? where id=? ;";
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
 				.getConnection();
@@ -80,12 +80,12 @@ final String sql = "delete from course where id=?";
 		
 	}
 	public Course getCourse(int id) throws SQLException {
-		StringBuilder sb = new StringBuilder("select course.id as courseId, course.name as courseName,") 
-				.append("course.credits as credits, Teacher.id as teacherId,Teacher.first_name as firstName, ")
+		StringBuilder sb = new StringBuilder("select Course.id as courseId, Course.name as courseName,") 
+				.append("Course.credits as credits, Teacher.id as teacherId,Teacher.first_name as firstName, ")
 				.append("Teacher.last_name as lastName, Teacher.designation as designation ")
 		.append("from Course left outer join Teacher on ")
-		.append("course.Teacher_id = Teacher.id ")
-		.append("where course.id=?");
+		.append("Course.Teacher_id = Teacher.id ")
+		.append("where Course.id=?");
 		Course course=null;
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
@@ -124,12 +124,11 @@ final String sql = "delete from course where id=?";
 	public List<Course> getCourses () throws SQLException{
 		List<Course> list=new ArrayList<>();
 		//create SQL statement using left outer join
-		StringBuilder sb = new StringBuilder("select course.id as courseId, course.name as courseName,") 
-				.append("course.credits as credits, Teacher.id as teacherId,Teacher.first_name as firstName, ")
+		StringBuilder sb = new StringBuilder("select Course.id as courseId, Course.name as courseName,") 
+				.append("Course.credits as credits, Teacher.id as teacherId,Teacher.first_name as firstName, ")
 				.append("Teacher.last_name as lastName, Teacher.designation as designation ")
 		.append("from Course left outer join Teacher on ")
-		.append("course.Teacher_id = Teacher.id ")
-		.append("order by course.name");
+		.append("Course.Teacher_id = Teacher.id ");
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
 				.getConnection();

@@ -42,7 +42,7 @@ public class TeacherDAO {
 		}
 	}
 	public void deleteTeacher(int id) throws SQLException {
-final String sql = "delete from teacher where id=?";
+final String sql = "delete from Teacher where id=?";
 		
 		try(Connection con=
 				DatabaseConnectionFactory.getConnectionFactory()
@@ -60,7 +60,7 @@ final String sql = "delete from teacher where id=?";
 	}
 
 	public void updateTeacher(Teacher teacher)throws SQLException{
-		String sql="Update teacher SET "
+		String sql="Update Teacher SET "
 				+ "first_name=?, "
 				+ "last_name=?, "
 				+ "designation=? "
@@ -89,7 +89,7 @@ final String sql = "delete from teacher where id=?";
 		try {
 			stmt = con.createStatement();
 			
-			String sql = "select * from teacher ";
+			String sql = "select * from Teacher ";
 			
 			rs = stmt.executeQuery(sql);
 
@@ -112,7 +112,7 @@ final String sql = "delete from teacher where id=?";
 
 	public Teacher getTeacher(int id) throws SQLException {
 		Connection con = DatabaseConnectionFactory.getConnectionFactory().getConnection();
-		String sql = "select * from teacher where id=?";
+		String sql = "select * from Teacher where id=?";
 		Teacher teacher =null;
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
