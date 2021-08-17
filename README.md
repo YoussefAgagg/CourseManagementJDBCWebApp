@@ -145,7 +145,7 @@ Download and extract [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 * Choose **Alternate JRE** -> jdk1.8.
 
 #### Eclipse setup server
-* Window -> Show View -> Servers
+* Window -> Show View -> select **Servers** (if you do not find this option in the menu, select **Other**, and type **Servers** into the Filter textbox. Then, select **Servers** ).
 
 ### NetBeans
 #### NetBeans setup server runtime
