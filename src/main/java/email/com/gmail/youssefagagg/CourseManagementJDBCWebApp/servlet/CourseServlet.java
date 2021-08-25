@@ -19,6 +19,13 @@ import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.CourseDAO;
 @WebServlet("/courseServlet")
 public class CourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private CourseDAO courseDAO;
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		courseDAO=new CourseDAO();
+		super.init();
+	}
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -87,11 +94,11 @@ public class CourseServlet extends HttpServlet {
 
 		try {
 			if(!update)
-				course.addCourse();
+				courseDAO.addCourse(course);
 			else {
 				int id=Integer.parseInt(req.getParameter("courseid"));
 				course.setId(id);
-				course.updateCourse();
+				courseDAO.updateCorse(course);
 			}
 
 		} catch (SQLException e) {
@@ -114,7 +121,7 @@ public class CourseServlet extends HttpServlet {
 
 	}
 	private void updateFromListCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		CourseDAO courseDAO=new CourseDAO();
+		
 		int id=Integer.parseInt(req.getParameter("courseid"));
 		try {
 			Course course=courseDAO.getCourse(id);
@@ -130,7 +137,7 @@ public class CourseServlet extends HttpServlet {
 	private void deleteFromListCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url="/listCourse.jsp";
 		int id=Integer.parseInt(req.getParameter("courseid"));
-		CourseDAO courseDAO=new CourseDAO();
+		
 		try {
 			courseDAO.deleteCourse(id);
 		} catch (SQLException e) {

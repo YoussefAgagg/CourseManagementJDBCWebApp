@@ -13,9 +13,9 @@
 </head>
 <body>
 	<c:catch var="err">
-		<jsp:useBean id="studentBean"
-			class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Student" />
-		<c:set var="students" value="${studentBean.getStudents()}" />
+		<jsp:useBean id="studentDAO"
+			class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.StudentDAO" />
+		<c:set var="students" value="${studentDAO.getStudents()}" />
 	</c:catch>
 	<c:choose>
 		<c:when test="${err != null}">

@@ -10,9 +10,9 @@
 </head>
 <body>
 	<c:catch var="err">
-		<jsp:useBean id="teacherBean"
-			class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Teacher" />
-		<c:set var="teachers" value="${teacherBean.getTeachers()}" />
+		<jsp:useBean id="teacherDAO"
+			class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.TeacherDAO" />
+		<c:set var="teachers" value="${teacherDAO.getTeachers()}" />
 	</c:catch>
 	<c:choose>
 		<c:when test="${err != null}">

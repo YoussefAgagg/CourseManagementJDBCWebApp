@@ -6,23 +6,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add Course</title>
+<title>Update Course</title>
 </head>
 <body>
 	<c:set var="errMsg" value="${message}" />
 	<c:set var="course" value="${course}" />
 
-	<jsp:useBean id="teacherBean"
-		class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Teacher"
-		scope="session" />
-	<c:catch var="teacherBeanErr">
-		<c:set var="teachers" value="${teacherBean.getTeachers()}" />
+	<jsp:useBean id="teacherDAO"
+		class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.TeacherDAO" />
+
+	<c:catch var="teacherErr">
+		<c:set var="teachers" value="${teacherDAO.getTeachers()}" />
 	</c:catch>
-	<c:if test="${teacherBeanErr != null}">
+
+	<c:if test="${teacherErr != null}">
 		<c:set var="errMsg" value="${err.message}" />
 	</c:if>
 
-	<h2>Add Course:</h2>
+	<h2>Update Course:</h2>
 	<c:if test="${errMsg != null}">
 		<span style="color: red;"> <c:out value="${errMsg}"></c:out>
 		</span>

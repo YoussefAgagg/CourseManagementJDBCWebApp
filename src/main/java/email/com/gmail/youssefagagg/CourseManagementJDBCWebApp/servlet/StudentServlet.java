@@ -22,6 +22,13 @@ import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.StudentDAO;
 @WebServlet("/studentServlet")
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private StudentDAO studentDAO;
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		studentDAO=new StudentDAO();
+		super.init();
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -90,12 +97,12 @@ public class StudentServlet extends HttpServlet {
 	
 			try {
 				if(!update) {
-				student.addStudent();
+				studentDAO.addStudent(student);
 				}else {
 					
 					int id=Integer.parseInt(req.getParameter("studentid"));
 					student.setId(id);
-					student.updateStudent();
+					studentDAO.updateStudent(student);
 
 				}
 			} catch (SQLException e) {
@@ -112,7 +119,7 @@ public class StudentServlet extends HttpServlet {
 
 	}
 	private void updateFromListStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		StudentDAO studentDAO=new StudentDAO();
+		
 		int id=Integer.parseInt(req.getParameter("studentid"));
 		try {
 			Student student=studentDAO.getStudent(id);
@@ -128,7 +135,7 @@ public class StudentServlet extends HttpServlet {
 	private void deleteFromListStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url="/listStudent.jsp";
 		int id=Integer.parseInt(req.getParameter("studentid"));
-		StudentDAO studentDAO=new StudentDAO();
+		
 		try {
 			studentDAO.deleteStudent(id);
 		} catch (SQLException e) {

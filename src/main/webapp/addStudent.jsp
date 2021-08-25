@@ -12,13 +12,13 @@
 
 	<c:set var="errMsg" value="${message}" />
 
-	<jsp:useBean id="courseBean"
-		class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Course"
+	<jsp:useBean id="courseDAO"
+		class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.CourseDAO"
 		scope="session" />
-	<c:catch var="courseBeanErr">
-		<c:set var="courses" value="${courseBean.getCourses()}" />
+	<c:catch var="courseErr">
+		<c:set var="courses" value="${courseDAO.getCourses()}" />
 	</c:catch>
-	<c:if test="${courseBeanErr != null}">
+	<c:if test="${courseErr != null}">
 		<c:set var="errMsg" value="${err.message}" />
 	</c:if>
 

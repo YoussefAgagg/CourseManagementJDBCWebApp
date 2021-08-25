@@ -11,15 +11,15 @@
 <body>
 	<c:set var="errMsg" value="${message}" />
 
-	<jsp:useBean id="teacherBean"
-		class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.bean.Teacher"
-		scope="session" />
+	<jsp:useBean id="teacherDAO"
+		class="email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.TeacherDAO"
+		 />
 		
-	<c:catch var="teacherBeanErr">
-		<c:set var="teachers" value="${teacherBean.getTeachers()}" />
+	<c:catch var="teacherErr">
+		<c:set var="teachers" value="${teacherDAO.getTeachers()}" />
 	</c:catch>
 	
-	<c:if test="${teacherBeanErr != null}">
+	<c:if test="${teacherErr != null}">
 		<c:set var="errMsg" value="${err.message}" />
 	</c:if>
 

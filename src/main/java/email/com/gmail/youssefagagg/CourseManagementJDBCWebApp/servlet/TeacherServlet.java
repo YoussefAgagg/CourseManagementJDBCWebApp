@@ -18,6 +18,13 @@ import email.com.gmail.youssefagagg.CourseManagementJDBCWebApp.dao.TeacherDAO;
 @WebServlet("/teacherServlet")
 public class TeacherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private TeacherDAO teacherDAO;
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		teacherDAO=new TeacherDAO();
+		super.init();
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -77,11 +84,11 @@ public class TeacherServlet extends HttpServlet {
 		
 			try {
 				if(!update) {
-				teacher.addTeacher();
+				teacherDAO.addTeacher(teacher);
 				}else {
 					int id=Integer.parseInt(req.getParameter("teacherid"));
 					teacher.setId(id);
-					teacher.updateTeacher();
+					teacherDAO.updateTeacher(teacher);
 					
 				}
 			} catch (SQLException e) {
@@ -102,7 +109,7 @@ public class TeacherServlet extends HttpServlet {
 	}
 	private void updateFromListTeacher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		TeacherDAO teacherDAO=new TeacherDAO();
+	
 		int id=Integer.parseInt(req.getParameter("teacherid"));
 		try {
 			Teacher teacher=teacherDAO.getTeacher(id);
@@ -117,7 +124,7 @@ public class TeacherServlet extends HttpServlet {
 	private void deleteFromListTeacher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url="/listTeacher.jsp";
 		int id=Integer.parseInt(req.getParameter("teacherid"));
-		TeacherDAO teacherDAO=new TeacherDAO();
+		
 		try {
 			teacherDAO.deleteTeacher(id);
 		} catch (SQLException e) {
